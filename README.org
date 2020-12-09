@@ -1,0 +1,3 @@
+# garuda-qtile-settings
+
+Qtile settings for Garuda Linux

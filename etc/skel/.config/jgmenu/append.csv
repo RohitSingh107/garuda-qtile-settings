@@ -1,0 +1,4 @@
+^sep()
+Restart,systemctl -i reboot,system-reboot
+Log Out,pkill qtile
+Power Off,systemctl -i poweroff,system-shutdown
