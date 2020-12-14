@@ -45,7 +45,7 @@ dunst &
 #starting user applications at boot time
 run volumeicon &
 #run discord &
-nitrogen --restore &
+#nitrogen --restore &
 #run caffeine -a &
 #run vivaldi-stable &
 #run firefox &

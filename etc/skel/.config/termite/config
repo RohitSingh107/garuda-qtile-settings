@@ -35,7 +35,6 @@ urgent_on_bell = true
 
 ############################################################
 #### You can change the color coding to your liking
-#### There is a folder themes in ~/config/termite/themes
 #### Copy/paste the colors from one of the 79+ templates to this one
 #### A backup of the original config termite is present
 ############################################################
@@ -45,7 +44,6 @@ urgent_on_bell = true
 ############################################################
 
 [colors]
-# ArcoLinux Default Theme
 background = rgba(40, 42, 54, 0.8)
 
 # special
