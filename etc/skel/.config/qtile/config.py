@@ -37,7 +37,7 @@ keys = [
 # SUPER + FUNCTION KEYS
 
     Key([mod], "e", lazy.spawn('emacs')),
-    Key([mod], "c", lazy.spawn('killall conky && conky')),
+#    Key([mod], "c", lazy.spawn('killall conky && conky')),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "m", lazy.spawn('pragha')),
     Key([mod], "q", lazy.window.kill()),
@@ -75,24 +75,17 @@ keys = [
 
 # ALT + ... KEYS
 
-    #Key(["mod1"], "F3", lazy.spawn('xfce4-appfinder')),
 
-# VARIETY KEYS WITH PYWAL
-
-    Key(["mod1", "shift"], "f", lazy.spawn(home + '/.config/qtile/scripts/set-pywal.sh -f')),
-    Key(["mod1", "shift"], "p", lazy.spawn(home + '/.config/qtile/scripts/set-pywal.sh -p')),
-    Key(["mod1", "shift"], "n", lazy.spawn(home + '/.config/qtile/scripts/set-pywal.sh -n')),
-    Key(["mod1", "shift"], "u", lazy.spawn(home + '/.config/qtile/scripts/set-pywal.sh -u')),
 
 # CONTROL + SHIFT KEYS
 
-    Key([mod2, "shift"], "Escape", lazy.spawn('xfce4-taskmanager')),
+    Key([mod2, "shift"], "Escape", lazy.spawn('lxtask')),
 
 # SCREENSHOTS
 
-    Key([], "Print", lazy.spawn('ksnip -fs')),
-    Key([mod2], "Print", lazy.spawn('ksnip')),
-    Key([mod2, "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
+    Key([], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
+    Key([mod2], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
+#    Key([mod2, "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
 
 # MULTIMEDIA KEYS
 
