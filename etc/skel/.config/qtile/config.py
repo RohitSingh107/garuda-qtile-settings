@@ -393,15 +393,24 @@ def init_widgets_list():
                        padding = 0,
                        fontsize = 37
                        ),
-                widget.Net(
-                         font="Noto Sans",
-                         fontsize=12,
-                         interface=["wlan0"],
-                         format = '{down} ↓↑ {up}',
-                         foreground=colors[5],
-                         background=colors[3],
-                         padding = 0,
-                         ),
+                widget.CPU(
+                        font="Noto Sans",
+                        #format = '{MemUsed}M/{MemTotal}M',
+                        update_interval = 1,
+                        fontsize = 12,
+                        foreground = colors[5],
+                        background = colors[3],
+                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e htop')},
+                       ),
+#                widget.Net(
+#                         font="Noto Sans",
+#                         fontsize=12,
+#                         interface=["wlan0"],
+#                         format = '{down} ↓↑ {up}',
+#                         foreground=colors[5],
+#                         background=colors[3],
+#                         padding = 0,
+#                         ),
                 widget.TextBox(
                        text = '',
                        background = colors[3],
