@@ -23,7 +23,7 @@ function run {
 
 #Some ways to set your wallpaper besides variety or nitrogen
 feh --bg-fill ~/.config/qtile/flower.jpg &
-conky &
+conky -c ~/.config/conky/conky.conf &
 
 #IN BETA PHASE
 #start sxhkd to replace Qtile native key-bindings
