@@ -37,23 +37,22 @@ keys = [
 # SUPER + FUNCTION KEYS
 
     Key([mod], "e", lazy.spawn('emacs')),
-#    Key([mod], "c", lazy.spawn('killall conky && conky')),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "m", lazy.spawn('pragha')),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
-    Key([mod], "t", lazy.spawn('alacritty')),
+    Key([mod], "t", lazy.spawn('termite')),
     Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "g", lazy.spawn('nwggrid -p -o 0.4')),
     Key([mod], "Escape", lazy.spawn('xkill')),
-    Key([mod], "Return", lazy.spawn('termite')),
-    Key([mod], "KP_Enter", lazy.spawn('termite')),
+    Key([mod], "Return", lazy.spawn('alacritty')),
+    Key([mod], "KP_Enter", lazy.spawn('alacritty')),
 
     Key([mod], "x", lazy.shutdown()),
 
 # SUPER + SHIFT KEYS
 
-    Key([mod, "shift"], "Return", lazy.spawn('pcmanfm')),
+    Key([mod, "shift"], "Return", lazy.spawn(myTerm + ' -e ranger')),
     Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
@@ -62,16 +61,14 @@ keys = [
 
 # CONTROL + ALT KEYS
 
-    Key(["mod1", "control"], "Next", lazy.spawn('conky-rotate -n')),
-    Key(["mod1", "control"], "Prior", lazy.spawn('conky-rotate -p')),
     Key(["mod1", "control"], "c", lazy.spawn('catfish')),
     Key(["mod1", "control"], "f", lazy.spawn('firefox')),
     Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
     Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
     Key(["mod1", "control"], "p", lazy.spawn('pamac-manager')),
-    Key(["mod1", "control"], "t", lazy.spawn('alacritty')),
+    Key(["mod1", "control"], "t", lazy.spawn('termite')),
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
-    Key(["mod1", "control"], "Return", lazy.spawn('alacritty')),
+    Key(["mod1", "control"], "Return", lazy.spawn('termite')),
 
 # ALT + ... KEYS
 
@@ -234,7 +231,7 @@ for i in groups:
 
 
 def init_layout_theme():
-    return {"margin":5,
+    return {"margin":10,
             "border_width":2,
             "border_focus": "#ff0000",
             "border_normal": "#ffd700"
@@ -244,8 +241,8 @@ layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=8, border_width=2, border_focus="#ff0000", border_normal="#ffd700"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#ff0000", border_normal="#ffd700"),
+    layout.MonadTall(margin=16, border_width=2, border_focus="#ff0000", border_normal="#ffd700"),
+    layout.MonadWide(margin=16, border_width=2, border_focus="#ff0000", border_normal="#ffd700"),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
@@ -285,11 +282,25 @@ def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
 
+               widget.TextBox(
+                       text = "◢",
+                       background = colors[1],
+                       foreground = colors[9],
+                       padding = 0,
+                       fontsize = 53
+                       ),
                widget.Image(
-                       filename = "~/.config/qtile/icons/garuda-purple.png",
+                       filename = "~/.config/qtile/icons/garuda-red.png",
                        iconsize = 9,
+                       background = colors[9],
                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('jgmenu_run')}
                        ),
+                widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[9]
+                        ),
                widget.GroupBox(font="FontAwesome",
                         fontsize = 16,
                         margin_y = 1,
@@ -298,20 +309,21 @@ def init_widgets_list():
                         padding_x = 5,
                         borderwidth = 0,
                         disable_drag = False,
-                        active = colors[8],
+                        active = "#ffff00",
                         inactive = colors[5],
                         rounded = False,
                         highlight_method = "line",
                         this_current_screen_border = colors[8],
                         foreground = colors[5],
-                        background = colors[1]
+                        background = colors[9]
                         ),
-               widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
+                widget.TextBox(
+                       text = "◤",
+                       background = colors[1],
+                       foreground = colors[9],
+                       padding = 0,
+                       fontsize = 53
+                       ),
                widget.WindowName(font="Fantasque Sans Mono",
                         fontsize = 16,
                         foreground = colors[6],
@@ -603,7 +615,6 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'Arandr'},
     {'wmclass': 'feh'},
     {'wmclass': 'Galculator'},
-    {'wmclass': 'xfce4-terminal'},
     {'wname': 'branchdialog'},
     {'wname': 'Open File'},
     {'wname': 'pinentry'},

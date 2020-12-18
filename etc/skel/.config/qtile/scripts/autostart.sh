@@ -23,8 +23,6 @@ function run {
 
 #Some ways to set your wallpaper besides variety or nitrogen
 feh --bg-fill ~/.config/qtile/flower.jpg &
-#start the conky to learn the shortcuts
-#(conky -c $HOME/.config/qtile/scripts/system-overview) &
 conky &
 
 #IN BETA PHASE
