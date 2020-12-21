@@ -283,24 +283,30 @@ def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
 
-               widget.TextBox(
-                       text = "◢",
-                       background = colors[1],
-                       foreground = colors[9],
-                       padding = 0,
-                       fontsize = 53
-                       ),
+               #widget.TextBox(
+               #        text = "◢",
+               #        background = colors[1],
+               #        foreground = colors[9],
+               #        padding = 0,
+               #        fontsize = 45
+               #        ),
+                 widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),              #
                widget.Image(
                        filename = "~/.config/qtile/icons/garuda-red.png",
                        iconsize = 9,
-                       background = colors[9],
+                       background = colors[1],
                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('jgmenu_run')}
                        ),
                 widget.Sep(
                         linewidth = 1,
                         padding = 10,
                         foreground = colors[2],
-                        background = colors[9]
+                        background = colors[1]
                         ),
                widget.GroupBox(font="FontAwesome",
                         fontsize = 16,
@@ -316,15 +322,15 @@ def init_widgets_list():
                         highlight_method = "line",
                         this_current_screen_border = colors[8],
                         foreground = colors[5],
-                        background = colors[9]
+                        background = colors[1]
                         ),
-                widget.TextBox(
-                       text = "◤",
-                       background = colors[1],
-                       foreground = colors[9],
-                       padding = 0,
-                       fontsize = 53
-                       ),
+                #widget.TextBox(
+                #       text = "◤",
+                #       background = colors[1],
+                #       foreground = colors[9],
+                #       padding = 0,
+                #       fontsize = 46
+                #       ),
                widget.WindowName(font="Fantasque Sans Mono",
                         fontsize = 16,
                         foreground = colors[6],
@@ -521,8 +527,8 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=20))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20, background= "000000")),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=20, background= "000000"))]
 screens = init_screens()
 
 
