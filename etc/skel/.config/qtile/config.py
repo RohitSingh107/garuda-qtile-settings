@@ -53,7 +53,7 @@ keys = [
 
 # SUPER + SHIFT KEYS
 
-    Key([mod, "shift"], "Return", lazy.spawn(myTerm + ' -e ranger')),
+    Key([mod, "shift"], "Return", lazy.spawn('pcmanfm')),
     Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
@@ -183,6 +183,18 @@ keys = [
     Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
 
+         ### Treetab controls
+    Key([mod, "control"], "k",
+        lazy.layout.section_up(),
+        desc='Move up a section in treetab'
+        ),
+    Key([mod, "control"], "j",
+        lazy.layout.section_down(),
+        desc='Move down a section in treetab'
+        ),
+
+
+
 # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
@@ -248,7 +260,20 @@ layouts = [
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
     layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme)
+    layout.Max(**layout_theme),
+    layout.Columns(**layout_theme),
+    layout.Stack(**layout_theme),
+    layout.Tile(**layout_theme),
+    layout.TreeTab(
+        sections=['FIRST', 'SECOND'],
+        bg_color = '#141414',
+        active_bg = '#0000ff',
+        inactive_bg = '#1e90ff',
+        padding_y =5,
+        section_top =10,
+        panel_width = 320),
+    layout.VerticalTile(**layout_theme),
+    layout.Zoomy(**layout_theme)
 ]
 
 # COLORS FOR THE BAR
@@ -626,6 +651,9 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'Open File'},
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
+    {'wmclass': 'lxpolkit'},
+    {'wmclass': 'Lxpolkit'},
+
 
 ],  fullscreen_border_width = 0, border_width = 0)
 auto_fullscreen = True

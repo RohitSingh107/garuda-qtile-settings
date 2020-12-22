@@ -1,4 +1,3 @@
-ibus-daemon -d -x
 export EDITOR=/usr/bin/micro
 export BROWSER=firefox
 export TERM=alacritty

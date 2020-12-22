@@ -10,11 +10,11 @@ for path in os.listdir(d):
         wallpaper_list.append(full_path)
 
 #Add your own wallpapers directory
-#e = "/home/rohit/mydata/Pictures/wallpapers"
-#for path in os.listdir(e):
-#    full_path = os.path.join(e, path)
-#    if os.path.isfile(full_path):
-#        wallpaper_list.append(full_path)
+e = "/home/rohit/mydata/Pictures/wallpapers"
+for path in os.listdir(e):
+    full_path = os.path.join(e, path)
+    if os.path.isfile(full_path):
+        wallpaper_list.append(full_path)
 
 
 wallpaper = random.choice(wallpaper_list)

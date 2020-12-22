@@ -17,14 +17,14 @@ conky -c ~/.config/conky/conky.conf &
 
 
 #starting utility applications at boot time
+lxsession &
 run nm-applet &
 run pamac-tray &
 numlockx on &
-pasystray &
 blueman-applet &
 flameshot &
 picom --config $HOME/.config/picom/picom.conf &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
 
 #starting user applications at boot time

@@ -49,7 +49,7 @@ icon_size            = 24
 
 ## -------------------------------
 ## colors
-icon_theme           = Moka
+icon_theme           = Tela-purple-dark
 
 color_menu_bg        = #282828 100
 color_menu_fg        = #dddddd 100
