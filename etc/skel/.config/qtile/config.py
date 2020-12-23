@@ -36,25 +36,23 @@ keys = [
 
 # SUPER + FUNCTION KEYS
 
-    Key([mod], "e", lazy.spawn('emacs')),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "m", lazy.spawn('pragha')),
     Key([mod], "q", lazy.window.kill()),
-    Key([mod], "r", lazy.spawn('rofi-theme-selector')),
     Key([mod], "t", lazy.spawn('termite')),
     Key([mod], "v", lazy.spawn('pavucontrol')),
-    Key([mod], "g", lazy.spawn('nwggrid -p -o 0.4')),
+    Key([mod], "d", lazy.spawn('nwggrid -p -o 0.4')),
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('alacritty')),
     Key([mod], "KP_Enter", lazy.spawn('alacritty')),
     Key([mod], "w", lazy.spawn(home + '/.config/qtile/scripts/pywal-colors.py')),
-
     Key([mod], "x", lazy.shutdown()),
 
 # SUPER + SHIFT KEYS
 
     Key([mod, "shift"], "Return", lazy.spawn('pcmanfm')),
-    Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    #Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    Key([mod, "shift"], "d", lazy.spawn(home + '/.config/qtile/scripts/dmenu.sh')),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
@@ -63,16 +61,19 @@ keys = [
 # CONTROL + ALT KEYS
 
     Key(["mod1", "control"], "c", lazy.spawn('catfish')),
-    Key(["mod1", "control"], "f", lazy.spawn('firefox')),
     Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
     Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
-    Key(["mod1", "control"], "p", lazy.spawn('pamac-manager')),
     Key(["mod1", "control"], "t", lazy.spawn('termite')),
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
     Key(["mod1", "control"], "Return", lazy.spawn('termite')),
 
 # ALT + ... KEYS
 
+
+    Key(["mod1"], "p", lazy.spawn('pamac-manager')),
+    Key(["mod1"], "f", lazy.spawn('firefox')),
+    Key(["mod1"], "e", lazy.spawn('emacs')),
+    Key(["mod1"], "m", lazy.spawn('pcmanfm')),
 
 
 # CONTROL + SHIFT KEYS
@@ -216,7 +217,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
 group_labels = ["", "", "", "", "", "", "", "", "", "",]
 #group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "floating",]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "treetab", "floating",]
 #group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", "matrix", "monadtall", "bsp", "monadtall", "monadtall",]
 
 for i in range(len(group_names)):
@@ -271,7 +272,7 @@ layouts = [
         inactive_bg = '#1e90ff',
         padding_y =5,
         section_top =10,
-        panel_width = 320),
+        panel_width = 280),
     layout.VerticalTile(**layout_theme),
     layout.Zoomy(**layout_theme)
 ]
