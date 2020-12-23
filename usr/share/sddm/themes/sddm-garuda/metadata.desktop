@@ -1,0 +1,13 @@
+[SddmGreeterTheme]
+Name=ArcoLinux
+Description=ArcoLinux SDDM theme.
+License=GPL3.0
+Type=sddm-theme
+Version=0.1
+Website=https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-qtile-settings
+Screenshot=screenshot.jpg
+MainScript=Main.qml
+ConfigFile=theme.conf
+Email=erik.dubois@gmail.com
+Theme-Id=Learn, have fun and enjoy
+Theme-API=2.0
