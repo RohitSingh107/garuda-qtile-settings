@@ -74,6 +74,7 @@ keys = [
     Key(["mod1"], "f", lazy.spawn('firefox')),
     Key(["mod1"], "e", lazy.spawn('emacs')),
     Key(["mod1"], "m", lazy.spawn('pcmanfm')),
+    Key(["mod1"], "w", lazy.spawn('garuda-welcome')),
 
 
 # CONTROL + SHIFT KEYS
