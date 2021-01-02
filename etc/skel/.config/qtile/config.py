@@ -656,6 +656,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'ssh-askpass'},
     {'wmclass': 'lxpolkit'},
     {'wmclass': 'Lxpolkit'},
+    {'wmclass': 'yad'},
+    {'wmclass': 'Yad'},
 
 
 ],  fullscreen_border_width = 0, border_width = 0)
