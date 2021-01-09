@@ -45,7 +45,7 @@ keys = [
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('alacritty')),
     Key([mod], "KP_Enter", lazy.spawn('alacritty')),
-    Key([mod], "w", lazy.spawn(home + '/.config/qtile/scripts/pywal-colors.py')),
+    Key([mod], "w", lazy.spawn('pywal-colors.py')),
     Key([mod], "x", lazy.shutdown()),
 
 # SUPER + SHIFT KEYS

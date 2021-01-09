@@ -9,7 +9,7 @@ function run {
 
 
 #Special python script for auto wallpaper and colorscheme change
-~/.config/qtile/scripts/pywal-colors.py
+pywal-colors.py
 
 
 #feh --bg-fill ~/.config/qtile/flower.jpg &
