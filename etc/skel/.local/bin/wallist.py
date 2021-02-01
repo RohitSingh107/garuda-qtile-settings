@@ -13,5 +13,3 @@ def print_dirs():
     print(dir_list)
 
 add_dir("/usr/share/wallpapers/garuda-wallpapers")
-
-add_dir("/home/rohit/mydata/Pictures/wallpapers")
