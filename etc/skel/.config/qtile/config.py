@@ -5,7 +5,7 @@ import socket
 import subprocess
 from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget, hook, qtile
 from libqtile.widget import Spacer
 import albattery
 
@@ -328,7 +328,7 @@ def init_widgets_list():
                        filename = "~/.config/qtile/icons/garuda-red.png",
                        iconsize = 9,
                        background = colors[1],
-                       mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('jgmenu_run')}
+                       mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn('jgmenu_run')}
                        ),
                 widget.Sep(
                         linewidth = 1,
@@ -341,7 +341,7 @@ def init_widgets_list():
                         margin_y = 1,
                         margin_x = 0,
                         padding_y = 6,
-                        padding_x = 5,
+                        padding_x = 4,
                         borderwidth = 0,
                         disable_drag = False,
                         active = "#ffff00",
@@ -447,7 +447,7 @@ def init_widgets_list():
                         fontsize = 12,
                         foreground = colors[5],
                         background = colors[3],
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e htop')},
+                        mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
                        ),
 #                widget.Net(
 #                         font="Noto Sans",
@@ -492,7 +492,7 @@ def init_widgets_list():
                         fontsize = 12,
                         foreground = colors[5],
                         background = colors[9],
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerm + ' -e htop')},
+                        mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
                        ),
                widget.TextBox(
                        text = '',
