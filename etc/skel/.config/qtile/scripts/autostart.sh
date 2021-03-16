@@ -29,6 +29,7 @@ dunst &
 
 #starting user applications at boot time
 run volumeicon &
+run cbatticon &
 #run discord &
 #nitrogen --random --set-zoom-fill &
 #run caffeine -a &

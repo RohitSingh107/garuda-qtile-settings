@@ -210,12 +210,14 @@ groups = []
 
 # FOR QWERTY KEYBOARDS
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
+#group_names = ["1", "2", "3", "4", "5",]
 
 # FOR AZERTY KEYBOARDS
 #group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
 
 #group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
 group_labels = ["", "", "", "", "", "", "", "", "", "",]
+#group_labels = ["", "", "", "", "",]
 #group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "treetab", "floating",]
@@ -248,16 +250,16 @@ for i in groups:
 def init_layout_theme():
     return {"margin":10,
             "border_width":2,
-            "border_focus": "#ff0000",
-            "border_normal": "#ffd700"
+            "border_focus": "#ff00ff",
+            "border_normal": "#f4c2c2"
             }
 
 layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=16, border_width=2, border_focus="#ff0000", border_normal="#ffd700"),
-    layout.MonadWide(margin=16, border_width=2, border_focus="#ff0000", border_normal="#ffd700"),
+    layout.MonadTall(margin=16, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
+    layout.MonadWide(margin=16, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
@@ -284,15 +286,15 @@ def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
             ["#2F343F", "#2F343F"], # color 1
             ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#ff4500", "#ff4500"], # color 3
-            ["#3384d0", "#3384d0"], # color 4
+            ["#e75480", "#e75480"], # color 3
+            ["#f4c2c2", "#f4c2c2"], # color 4
             ["#ffffff", "#ffffff"], # color 5
             ["#ff0000", "#ff0000"], # color 6
             ["#62FF00", "#62FF00"], # color 7
-#            ["#6790eb", "#6790eb"], # color 8
             ["#000000", "#000000"], # color 8
-            ["#9400de", "#9400de"]] # color 9
-
+            ["#c40234", "#c40234"], # color 9
+            ["#6790eb", "#6790eb"], # color 10
+            ["#ff00ff", "#ff00ff"]]# color 11
 
 colors = init_colors()
 
@@ -344,12 +346,12 @@ def init_widgets_list():
                         padding_x = 4,
                         borderwidth = 0,
                         disable_drag = False,
-                        active = "#ffff00",
-                        inactive = colors[5],
+                        active = colors[11],
+                        inactive = colors[4],
                         rounded = False,
                         highlight_method = "block",
                         this_current_screen_border = colors[8],
-                        foreground = colors[5],
+                        foreground = colors[4],
                         background = colors[1]
                         ),
                 #widget.TextBox(
@@ -416,22 +418,32 @@ def init_widgets_list():
                #          padding = 3,
                #          threshold = 80
                #          ),
-                albattery.BatteryIcon(
-                         padding=0,
-                         scale=0.7,
-                         y_poss=2,
-                         theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-                         update_interval = 5,
-                         foreground = colors[5],
-                         background = colors[9]
-                         ),
+ #               albattery.BatteryIcon(
+ #                        padding=0,
+ #                        scale=0.7,
+ #                        y_poss=2,
+ #                        theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
+ #                        update_interval = 5,
+ #                        foreground = colors[5],
+ #                        background = colors[9]
+ #                        ),
                 # battery option 2  from Qtile
-                widget.Battery(
+#                widget.Battery(
+#                         font="Noto Sans",
+#                         update_interval = 10,
+#                         fontsize = 12,
+#                         foreground = colors[5],
+#                         background = colors[9],
+#                         ),
+                widget.Net(
                          font="Noto Sans",
-                         update_interval = 10,
-                         fontsize = 12,
-                         foreground = colors[5],
-                         background = colors[9],
+                         fontsize=12,
+                        # Here enter your network name
+                         interface=["wlp6s0"],
+                         format = '{down} ↓↑ {up}',
+                         foreground=colors[5],
+                         background=colors[9],
+                         padding = 0,
                          ),
                 widget.TextBox(
                        text = '',
