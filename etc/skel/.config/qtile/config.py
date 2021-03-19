@@ -7,7 +7,6 @@ from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook, qtile
 from libqtile.widget import Spacer
-import albattery
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -361,11 +360,29 @@ def init_widgets_list():
                 #       padding = 0,
                 #       fontsize = 46
                 #       ),
-               widget.WindowName(font="Fantasque Sans Mono",
-                        fontsize = 16,
-                        foreground = colors[6],
-                        background = colors[1],
-                        ),
+                widget.TaskList(
+                    highlight_method = 'border', # or block
+                    icon_size=18,
+                    max_title_width=150,
+                    rounded=True,
+                    padding_x=0,
+                    padding_y=0,
+                    margin_y=0,
+                    fontsize=14,
+                    border=colors[11],
+                    foreground=colors[11],
+                    margin=2,
+                    txt_floating='🗗',
+                    txt_minimized='🗕 ',
+                    borderwidth = 1,
+                    #unfocused_border = 'border'
+                ),
+
+#               widget.WindowName(font="Fantasque Sans Mono",
+#                        fontsize = 16,
+#                        foreground = colors[6],
+#                        background = colors[1],
+#                        ),
 
                widget.TextBox(
                        text = '',
