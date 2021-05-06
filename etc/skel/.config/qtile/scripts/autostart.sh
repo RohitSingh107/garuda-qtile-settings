@@ -13,7 +13,7 @@ pywal-colors.py
 
 
 #feh --bg-fill ~/.config/qtile/flower.jpg &
-conky -c ~/.config/conky/conky.conf &
+#conky -c ~/.config/conky/conky.conf &
 
 
 #starting utility applications at boot time
@@ -23,7 +23,8 @@ run pamac-tray &
 numlockx on &
 blueman-applet &
 #flameshot &
-picom --config $HOME/.config/picom/picom.conf &
+#picom --config $HOME/.config/picom/picom.conf &
+picom --config .config/picom/picom-blur.conf --experimental-backends &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
 

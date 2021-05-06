@@ -80,6 +80,7 @@ keys = [
 
     Key([mod2, "shift"], "Escape", lazy.spawn('lxtask')),
 
+
 # SCREENSHOTS
 
     Key([], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
@@ -362,7 +363,7 @@ def init_widgets_list():
                 #       ),
                 widget.TaskList(
                     highlight_method = 'border', # or block
-                    icon_size=18,
+                    icon_size=17,
                     max_title_width=150,
                     rounded=True,
                     padding_x=0,
