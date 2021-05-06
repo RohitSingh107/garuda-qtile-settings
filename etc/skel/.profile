@@ -1,5 +1,5 @@
 export EDITOR=/usr/bin/micro
-export BROWSER=firefox
+export BROWSER=firedragon
 export TERM=alacritty
 export MAIL=thunderbird
 export QT_QPA_PLATFORMTHEME="qt5ct"
