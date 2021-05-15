@@ -70,7 +70,7 @@ keys = [
 
 
     Key(["mod1"], "p", lazy.spawn('pamac-manager')),
-    Key(["mod1"], "f", lazy.spawn('librewolf')),
+    Key(["mod1"], "f", lazy.spawn('firedragon')),
     Key(["mod1"], "e", lazy.spawn('emacs')),
     Key(["mod1"], "m", lazy.spawn('pcmanfm')),
     Key(["mod1"], "w", lazy.spawn('garuda-welcome')),
