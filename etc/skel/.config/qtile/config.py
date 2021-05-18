@@ -1,4 +1,3 @@
-
 import os
 import re
 import socket
@@ -215,8 +214,8 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
 # FOR AZERTY KEYBOARDS
 #group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
 
-#group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
-group_labels = ["", "", "", "", "", "", "", "", "", "",]
+group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
+#group_labels = ["", "", "", "", "", "", "", "", "", "",]
 #group_labels = ["", "", "", "", "",]
 #group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
@@ -282,6 +281,7 @@ layouts = [
 
 # COLORS FOR THE BAR
 
+
 def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
             ["#2F343F", "#2F343F"], # color 1
@@ -294,9 +294,24 @@ def init_colors():
             ["#000000", "#000000"], # color 8
             ["#c40234", "#c40234"], # color 9
             ["#6790eb", "#6790eb"], # color 10
-            ["#ff00ff", "#ff00ff"]]# color 11
+            ["#ff00ff", "#ff00ff"], #11
+            ["#4c566a", "#4c566a"], #12 
+            ["#282c34", "#282c34"], #13
+            ["#212121", "#212121"], #14
+            ["#98c379", "#98c379"], #15 
+            ["#b48ead", "#b48ead"], #16 
+            ["#abb2bf", "#abb2bf"],# color 17
+            ["#81a1c1", "#81a1c1"], #18 
+            ["#56b6c2", "#56b6c2"], #19 
+            ["#c678dd", "#c678dd"], #20 
+            ["#e06c75", "#e06c75"], #21
+            ["#fb9f7f", "#fb9f7f"], #22
+            ["#ffd47e", "#ffd47e"]] #23
 
 colors = init_colors()
+
+def base(fg='text', bg='dark'):
+    return {'foreground': colors[14],'background': colors[15]}
 
 
 # WIDGETS FOR THE BAR
@@ -313,54 +328,45 @@ def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
 
-               #widget.TextBox(
-               #        text = "◢",
-               #        background = colors[1],
-               #        foreground = colors[9],
-               #        padding = 0,
-               #        fontsize = 45
-               #        ),
                  widget.Sep(
                         linewidth = 1,
                         padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
+                        foreground = colors[15],
+                        background = colors[15]
                         ),              #
                widget.Image(
                        filename = "~/.config/qtile/icons/garuda-red.png",
                        iconsize = 9,
-                       background = colors[1],
+                       background = colors[15],
                        mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn('jgmenu_run')}
                        ),
-                widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
+               widget.GroupBox(
+
+            **base(bg=colors[15]),
+            font='UbuntuMono Nerd Font',
+
+                    fontsize = 11,
+                    margin_y = 3,
+                    margin_x = 2,
+                    padding_y = 5,
+                    padding_x = 4,
+                    borderwidth = 3,
+
+            active=colors[5],
+            inactive=colors[6],
+            rounded= True,
+            highlight_method='block',
+            urgent_alert_method='block',
+            urgent_border=colors[16],
+            this_current_screen_border=colors[20],
+            this_screen_border=colors[17],
+            other_current_screen_border=colors[13],
+            other_screen_border=colors[17],
+            disable_drag=True
+
+
+                   
                         ),
-               widget.GroupBox(font="FontAwesome",
-                        fontsize = 16,
-                        margin_y = 1,
-                        margin_x = 0,
-                        padding_y = 6,
-                        padding_x = 4,
-                        borderwidth = 0,
-                        disable_drag = False,
-                        active = colors[11],
-                        inactive = colors[4],
-                        rounded = False,
-                        highlight_method = "block",
-                        this_current_screen_border = colors[8],
-                        foreground = colors[4],
-                        background = colors[1]
-                        ),
-                #widget.TextBox(
-                #       text = "◤",
-                #       background = colors[1],
-                #       foreground = colors[9],
-                #       padding = 0,
-                #       fontsize = 46
-                #       ),
                 widget.TaskList(
                     highlight_method = 'border', # or block
                     icon_size=17,
@@ -370,28 +376,23 @@ def init_widgets_list():
                     padding_y=0,
                     margin_y=0,
                     fontsize=14,
-                    border=colors[11],
-                    foreground=colors[11],
+                    border=colors[7],
+                    foreground=colors[9],
                     margin=2,
                     txt_floating='🗗',
                     txt_minimized='🗕 ',
                     borderwidth = 1,
+                    background=colors[20],
                     #unfocused_border = 'border'
                 ),
 
-#               widget.WindowName(font="Fantasque Sans Mono",
-#                        fontsize = 16,
-#                        foreground = colors[6],
-#                        background = colors[1],
-#                        ),
-
-               widget.TextBox(
-                       text = '',
-                       background = colors[1],
-                       foreground = colors[3],
-                       padding = 0,
-                       fontsize = 37
-                       ),
+#               widget.TextBox(
+#                       text = '',
+#                       background = colors[21],
+#                       foreground = colors[3],
+#                       padding = 0,
+#                       fontsize = 27
+#                       ),
                widget.CurrentLayoutIcon(
                        custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
                        foreground = colors[5],
@@ -405,54 +406,14 @@ def init_widgets_list():
                       foreground = colors[5],
                       background = colors[3]
                         ),
-               widget.TextBox(
-                       text = '',
-                       background = colors[3],
-                       foreground = colors[9],
-                       padding = 0,
-                       fontsize = 37
-                       ),
+#               widget.TextBox(
+#                       text = '',
+#                       background = colors[3],
+#                       foreground = colors[9],
+#                       padding = 0,
+#                       fontsize = 27
+#                       ),
 
-               # widget.NetGraph(
-               #          font="Noto Sans",
-               #          fontsize=12,
-               #          bandwidth="down",
-               #          interface="auto",
-               #          fill_color = colors[8],
-               #          foreground=colors[2],
-               #          background=colors[1],
-               #          graph_color = colors[8],
-               #          border_color = colors[2],
-               #          padding = 0,
-               #          border_width = 1,
-               #          line_width = 1,
-               #          ),
-               # # do not activate in Virtualbox - will break qtile
-               # widget.ThermalSensor(
-               #          foreground = colors[5],
-               #          foreground_alert = colors[6],
-               #          background = colors[1],
-               #          metric = True,
-               #          padding = 3,
-               #          threshold = 80
-               #          ),
- #               albattery.BatteryIcon(
- #                        padding=0,
- #                        scale=0.7,
- #                        y_poss=2,
- #                        theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
- #                        update_interval = 5,
- #                        foreground = colors[5],
- #                        background = colors[9]
- #                        ),
-                # battery option 2  from Qtile
-#                widget.Battery(
-#                         font="Noto Sans",
-#                         update_interval = 10,
-#                         fontsize = 12,
-#                         foreground = colors[5],
-#                         background = colors[9],
-#                         ),
                 widget.Net(
                          font="Noto Sans",
                          fontsize=12,
@@ -460,111 +421,91 @@ def init_widgets_list():
                          interface=["wlp6s0"],
                          format = '{down} ↓↑ {up}',
                          foreground=colors[5],
-                         background=colors[9],
+                         background=colors[19],
                          padding = 0,
                          ),
-                widget.TextBox(
-                       text = '',
-                       background = colors[9],
-                       foreground = colors[3],
-                       padding = 0,
-                       fontsize = 37
-                       ),
+#                widget.TextBox(
+#                       text = '',
+#                       background = colors[9],
+#                       foreground = colors[3],
+#                       padding = 0,
+#                       fontsize = 37
+#                       ),
                 widget.CPU(
                         font="Noto Sans",
                         #format = '{MemUsed}M/{MemTotal}M',
                         update_interval = 1,
                         fontsize = 12,
                         foreground = colors[5],
-                        background = colors[3],
+                        background = colors[22],
                         mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
                        ),
-#                widget.Net(
-#                         font="Noto Sans",
-#                         fontsize=12,
-#                         interface=["wlan0"],
-#                         format = '{down} ↓↑ {up}',
-#                         foreground=colors[5],
-#                         background=colors[3],
-#                         padding = 0,
-#                         ),
-                widget.TextBox(
-                       text = '',
-                       background = colors[3],
-                       foreground = colors[9],
-                       padding = 0,
-                       fontsize = 37
-                       ),
-
-               #widget.CPUGraph(
-               #         border_color = colors[2],
-               #         fill_color = colors[5],
-               #         graph_color = colors[6],
-               #         background=colors[9],
-               #         border_width = 1,
-               #         line_width = 1,
-               #         core = "all",
-               #         type = "box"
-               #         ),
-
-               widget.TextBox(
-                        font="FontAwesome",
-                        text="  ",
-                        foreground=colors[5],
-                        background=colors[9],
-                        padding = 0,
-                        fontsize=16
-                        ),
+#                widget.TextBox(
+#                       text = '',
+#                       background = colors[3],
+#                       foreground = colors[9],
+#                       padding = 0,
+#                       fontsize = 37
+#                       ),
+#
+#               widget.TextBox(
+#                        font="FontAwesome",
+#                        text="  ",
+#                        foreground=colors[5],
+#                        background=colors[9],
+#                        padding = 0,
+#                        fontsize=16
+#                        ),
                widget.Memory(
                         font="Noto Sans",
                         format = '{MemUsed}M/{MemTotal}M',
                         update_interval = 1,
                         fontsize = 12,
                         foreground = colors[5],
-                        background = colors[9],
+                        background = colors[16],
                         mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
                        ),
-               widget.TextBox(
-                       text = '',
-                       background = colors[9],
-                       foreground = colors[3],
-                       padding = 0,
-                       fontsize = 37
-                       ),
-               widget.TextBox(
-                        font="FontAwesome",
-                        text="  ",
-                        foreground=colors[5],
-                        background=colors[3],
-                        padding = 0,
-                        fontsize=16
-                        ),
+#               widget.TextBox(
+#                       text = '',
+#                       background = colors[9],
+#                       foreground = colors[3],
+#                       padding = 0,
+#                       fontsize = 37
+#                       ),
+#               widget.TextBox(
+#                        font="FontAwesome",
+#                        text="  ",
+#                        foreground=colors[5],
+#                        background=colors[3],
+#                        padding = 0,
+#                        fontsize=16
+#                        ),
                widget.Clock(
-                        foreground = colors[5],
-                        background = colors[3],
+                        foreground = colors[9],
+                        background = colors[23],
                         fontsize = 12,
                         format="%Y-%m-%d %H:%M"
                         ),
-                widget.TextBox(
-                       text = '',
-                       background = colors[3],
-                       foreground = colors[9],
-                       padding = 0,
-                       fontsize = 37
-                       ),
+#                widget.TextBox(
+#                       text = '',
+#                       background = colors[3],
+#                       foreground = colors[9],
+#                       padding = 0,
+#                       fontsize = 37
+#                       ),
 
                widget.Systray(
-                       background=colors[9],
+                       background=colors[10],
                        icon_size=20,
                        padding = 4
                        ),
-              widget.TextBox(
-                        text = '',
-                        background = colors[9],
-                        foreground = colors[1],
-                        padding = 0,
-                        fontsize = 37
-                        ),
+#              widget.TextBox(
+#                        text = '',
+#                        background = colors[9],
+#                        foreground = colors[1],
+#                        padding = 0,
+#                        fontsize = 37
+#                        ),
 
               ]
     return widgets_list
@@ -585,7 +526,7 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20, opacity=0.85, background= "000000")),
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20, opacity=0.85, background= "000000", margin=[10,10,5,10])),
             Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=20, opacity=0.85, background= "000000"))]
 screens = init_screens()
 
