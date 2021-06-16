@@ -377,7 +377,7 @@ def init_widgets_list():
                     foreground=colors[9],
                     margin=2,
                     txt_floating='🗗',
-                    txt_minimized='🗕 ',
+                    txt_minimized='>_ ',
                     borderwidth = 1,
                     background=colors[20],
                     #unfocused_border = 'border'
@@ -523,7 +523,7 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20, opacity=0.85, background= "000000", margin=[10,10,5,10])),
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20, opacity=0.85, background= "000000")),
             Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=20, opacity=0.85, background= "000000"))]
 screens = init_screens()
 
