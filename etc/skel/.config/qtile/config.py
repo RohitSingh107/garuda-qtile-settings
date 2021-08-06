@@ -455,9 +455,10 @@ def init_widgets_list():
 #                        ),
                widget.Memory(
                         font="Noto Sans",
-                        format = '{MemUsed}M/{MemTotal}M',
+                        format = '{MemUsed: .0f}M/{MemTotal: .0f}M',
                         update_interval = 1,
                         fontsize = 12,
+                        measure_mem = 'M',
                         foreground = colors[5],
                         background = colors[16],
                         mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
