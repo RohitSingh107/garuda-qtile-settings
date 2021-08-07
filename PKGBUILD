@@ -1,9 +1,9 @@
 # Maintainer: Librewish <librewish@gmail.com>
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=garuda-qtile-settings
 pkgdesc='Garuda Linux Qtile settings'
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/settings/$pkgname"
