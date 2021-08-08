@@ -1,9 +1,0 @@
-[Desktop Entry]
-Categories=System;
-Comment=Use .bash_profile from garuda
-Exec=mv ~/.bash_profile_garuda ~/.bash_profile;rm ~/.config/autostart/use_garuda_bash_profile.desktop
-Icon=setup
-Name=Use Garuda .bash_profile
-StartupNotify=false
-Terminal=false
-Type=Application
