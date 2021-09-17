@@ -35,21 +35,18 @@ keys = [
 # SUPER + FUNCTION KEYS
 
     Key([mod], "f", lazy.window.toggle_fullscreen()),
-    Key([mod], "m", lazy.spawn('pragha')),
     Key([mod], "q", lazy.window.kill()),
-    Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "d", lazy.spawn('nwggrid -p -o 0.4')),
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('alacritty')),
     Key([mod], "KP_Enter", lazy.spawn('alacritty')),
-    Key([mod], "w", lazy.spawn('pywal-colors.py')),
     Key([mod], "x", lazy.shutdown()),
 
 # SUPER + SHIFT KEYS
 
     Key([mod, "shift"], "Return", lazy.spawn('pcmanfm')),
-    #Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
-    Key([mod, "shift"], "d", lazy.spawn(home + '/.config/qtile/scripts/dmenu.sh')),
+    Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+#    Key([mod, "shift"], "d", lazy.spawn(home + '/.config/qtile/scripts/dmenu.sh')),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
@@ -57,8 +54,6 @@ keys = [
 
 # CONTROL + ALT KEYS
 
-    Key(["mod1", "control"], "c", lazy.spawn('catfish')),
-    Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
     Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
 
@@ -67,7 +62,6 @@ keys = [
 
     Key(["mod1"], "p", lazy.spawn('pamac-manager')),
     Key(["mod1"], "f", lazy.spawn('firedragon')),
-    Key(["mod1"], "e", lazy.spawn('emacs')),
     Key(["mod1"], "m", lazy.spawn('pcmanfm')),
     Key(["mod1"], "w", lazy.spawn('garuda-welcome')),
 
@@ -83,7 +77,6 @@ keys = [
     Key([mod2], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
 #    Key([mod2, "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
 
-# MULTIMEDIA KEYS
 
 # INCREASE/DECREASE BRIGHTNESS
     Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),
@@ -383,13 +376,6 @@ def init_widgets_list():
                     #unfocused_border = 'border'
                 ),
 
-#               widget.TextBox(
-#                       text = '',
-#                       background = colors[21],
-#                       foreground = colors[3],
-#                       padding = 0,
-#                       fontsize = 27
-#                       ),
                widget.CurrentLayoutIcon(
                        custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
                        foreground = colors[5],
@@ -397,19 +383,14 @@ def init_widgets_list():
                        padding = 0,
                        scale = 0.7
                        ),
+
                widget.CurrentLayout(
                       font = "Noto Sans Bold",
                       fontsize = 12,
                       foreground = colors[5],
                       background = colors[3]
                         ),
-#               widget.TextBox(
-#                       text = '',
-#                       background = colors[3],
-#                       foreground = colors[9],
-#                       padding = 0,
-#                       fontsize = 27
-#                       ),
+
 
                 widget.Net(
                          font="Noto Sans",
@@ -421,13 +402,7 @@ def init_widgets_list():
                          background=colors[19],
                          padding = 0,
                          ),
-#                widget.TextBox(
-#                       text = '',
-#                       background = colors[9],
-#                       foreground = colors[3],
-#                       padding = 0,
-#                       fontsize = 37
-#                       ),
+
                 widget.CPU(
                         font="Noto Sans",
                         #format = '{MemUsed}M/{MemTotal}M',
@@ -437,22 +412,7 @@ def init_widgets_list():
                         background = colors[22],
                         mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
                        ),
-#                widget.TextBox(
-#                       text = '',
-#                       background = colors[3],
-#                       foreground = colors[9],
-#                       padding = 0,
-#                       fontsize = 37
-#                       ),
-#
-#               widget.TextBox(
-#                        font="FontAwesome",
-#                        text="  ",
-#                        foreground=colors[5],
-#                        background=colors[9],
-#                        padding = 0,
-#                        fontsize=16
-#                        ),
+
                widget.Memory(
                         font="Noto Sans",
                         format = '{MemUsed: .0f}M/{MemTotal: .0f}M',
@@ -463,48 +423,19 @@ def init_widgets_list():
                         background = colors[16],
                         mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
                        ),
-#               widget.TextBox(
-#                       text = '',
-#                       background = colors[9],
-#                       foreground = colors[3],
-#                       padding = 0,
-#                       fontsize = 37
-#                       ),
-#               widget.TextBox(
-#                        font="FontAwesome",
-#                        text="  ",
-#                        foreground=colors[5],
-#                        background=colors[3],
-#                        padding = 0,
-#                        fontsize=16
-#                        ),
+
                widget.Clock(
                         foreground = colors[9],
                         background = colors[23],
                         fontsize = 12,
                         format="%Y-%m-%d %H:%M"
                         ),
-#                widget.TextBox(
-#                       text = '',
-#                       background = colors[3],
-#                       foreground = colors[9],
-#                       padding = 0,
-#                       fontsize = 37
-#                       ),
 
                widget.Systray(
                        background=colors[10],
                        icon_size=20,
                        padding = 4
                        ),
-#              widget.TextBox(
-#                        text = '',
-#                        background = colors[9],
-#                        foreground = colors[1],
-#                        padding = 0,
-#                        fontsize = 37
-#                        ),
-
               ]
     return widgets_list
 
@@ -578,7 +509,7 @@ dgroups_app_rules = []
 # END
 # ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
 
-
+j
 
 main = None
 

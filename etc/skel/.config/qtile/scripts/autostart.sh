@@ -8,13 +8,6 @@ function run {
 }
 
 
-#Special python script for auto wallpaper and colorscheme change
-pywal-colors.py
-
-
-#feh --bg-fill ~/.config/qtile/flower.jpg &
-#conky -c ~/.config/conky/conky.conf &
-
 
 #starting utility applications at boot time
 lxsession &
@@ -30,7 +23,6 @@ dunst &
 feh --randomize --bg-fill /usr/share/wallpapers/garuda-wallpapers/*
 #starting user applications at boot time
 run volumeicon &
-run cbatticon &
 #run discord &
 #nitrogen --random --set-zoom-fill &
 #run caffeine -a &
