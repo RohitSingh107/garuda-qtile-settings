@@ -509,7 +509,7 @@ dgroups_app_rules = []
 # END
 # ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
 
-j
+
 
 main = None
 
