@@ -1,10 +1,39 @@
+# Copyright (c) 2010 Aldo Cortesi
+# Copyright (c) 2010, 2014 dequis
+# Copyright (c) 2012 Randall Ma
+# Copyright (c) 2012-2014 Tycho Andersen
+# Copyright (c) 2012 Craig Barnes
+# Copyright (c) 2013 horsik
+# Copyright (c) 2013 Tao Sauvage
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+
 import os
 import re
 import socket
 import subprocess
-from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
-from libqtile.command import lazy
+from typing import List  # noqa: F401
 from libqtile import layout, bar, widget, hook, qtile
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
+from libqtile.command import lazy
+
 from libqtile.widget import Spacer
 
 #mod4 or mod = super key
@@ -36,6 +65,8 @@ keys = [
 
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
+    Key([mod], "t", lazy.spawn('xterm')),
+    Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "d", lazy.spawn('nwggrid -p -o 0.4')),
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('alacritty')),
@@ -55,6 +86,7 @@ keys = [
 # CONTROL + ALT KEYS
 
     Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
+    Key(["mod1", "control"], "t", lazy.spawn('xterm')),
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
 
 # ALT + ... KEYS
@@ -77,6 +109,7 @@ keys = [
     Key([mod2], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
 #    Key([mod2, "shift"], "Print", lazy.spawn('gnome-screenshot -i')),
 
+# MULTIMEDIA KEYS
 
 # INCREASE/DECREASE BRIGHTNESS
     Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),
@@ -199,7 +232,6 @@ groups = []
 
 # FOR QWERTY KEYBOARDS
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
-#group_names = ["1", "2", "3", "4", "5",]
 
 # FOR AZERTY KEYBOARDS
 #group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
@@ -226,6 +258,7 @@ for i in groups:
 #CHANGE WORKSPACES
         Key([mod], i.name, lazy.group[i.name].toscreen()),
         Key([mod], "Tab", lazy.screen.next_group()),
+        Key([mod, "shift" ], "Tab", lazy.screen.prev_group()),
         Key(["mod1"], "Tab", lazy.screen.next_group()),
         Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
 
@@ -474,6 +507,9 @@ dgroups_app_rules = []
 # ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
 # BEGIN
 
+#########################################################
+################ assgin apps to groups ##################
+#########################################################
 # @hook.subscribe.client_new
 # def assign_app_group(client):
 #     d = {}
@@ -536,28 +572,31 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},
-    {'wmclass': 'makebranch'},
-    {'wmclass': 'maketag'},
-    {'wmclass': 'Arandr'},
-    {'wmclass': 'feh'},
-    {'wmclass': 'Galculator'},
-    {'wname': 'branchdialog'},
-    {'wname': 'Open File'},
-    {'wname': 'pinentry'},
-    {'wmclass': 'ssh-askpass'},
-    {'wmclass': 'lxpolkit'},
-    {'wmclass': 'Lxpolkit'},
-    {'wmclass': 'yad'},
-    {'wmclass': 'Yad'},
+    *layout.Floating.default_float_rules,
+    Match(wm_class='confirm'),
+    Match(wm_class='dialog'),
+    Match(wm_class='download'),
+    Match(wm_class='error'),
+    Match(wm_class='file_progress'),
+    Match(wm_class='notification'),
+    Match(wm_class='splash'),
+    Match(wm_class='toolbar'),
+    Match(wm_class='confirmreset'),
+    Match(wm_class='makebranch'),
+    Match(wm_class='maketag'),
+    Match(wm_class='Arandr'),
+    Match(wm_class='feh'),
+    Match(wm_class='Galculator'),
+    Match(title='branchdialog'),
+    Match(title='Open File'),
+    Match(title='pinentry'),
+    Match(wm_class='ssh-askpass'),
+    Match(wm_class='lxpolkit'),
+    Match(wm_class='Lxpolkit'),
+    Match(wm_class='yad'),
+    Match(wm_class='Yad'),
+    Match(wm_class='Cairo-dock'),
+    Match(wm_class='cairo-dock'),
 
 
 ],  fullscreen_border_width = 0, border_width = 0)
