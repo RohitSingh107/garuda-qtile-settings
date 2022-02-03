@@ -69,7 +69,7 @@ keys = [
     Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "d", lazy.spawn('nwggrid -p -o 0.4')),
     Key([mod], "Escape", lazy.spawn('xkill')),
-    Key([mod], "Return", lazy.spawn('alacritty')),
+    Key([mod], "Return", lazy.spawn(myTerm)),
     Key([mod], "KP_Enter", lazy.spawn('alacritty')),
     Key([mod], "x", lazy.shutdown()),
 
@@ -236,8 +236,8 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
 # FOR AZERTY KEYBOARDS
 #group_names = ["ampersand", "eacute", "quotedbl", "apostrophe", "parenleft", "section", "egrave", "exclam", "ccedilla", "agrave",]
 
-group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
-#group_labels = ["", "", "", "", "", "", "", "", "", "",]
+# group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
+group_labels = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ",]
 #group_labels = ["", "", "", "", "",]
 #group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
 
@@ -280,8 +280,8 @@ layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=16, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
-    layout.MonadWide(margin=16, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
+    layout.MonadTall(margin=8, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
+    layout.MonadWide(margin=8, border_width=2, border_focus="#ff00ff", border_normal="#f4c2c2"),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
@@ -309,10 +309,10 @@ def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
             ["#2F343F", "#2F343F"], # color 1
             ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#e75480", "#e75480"], # color 3
+            ["#ff5050", "#ff5050"], # color 3
             ["#f4c2c2", "#f4c2c2"], # color 4
             ["#ffffff", "#ffffff"], # color 5
-            ["#ff0000", "#ff0000"], # color 6
+            ["#ffd47e", "#ffd47e"], # color 6
             ["#62FF00", "#62FF00"], # color 7
             ["#000000", "#000000"], # color 8
             ["#c40234", "#c40234"], # color 9
@@ -321,12 +321,12 @@ def init_colors():
             ["#4c566a", "#4c566a"], #12 
             ["#282c34", "#282c34"], #13
             ["#212121", "#212121"], #14
-            ["#98c379", "#98c379"], #15 
-            ["#b48ead", "#b48ead"], #16 
+            ["#e75480", "#e75480"], #15 
+            ["#2aa899", "#2aa899"], #16 
             ["#abb2bf", "#abb2bf"],# color 17
             ["#81a1c1", "#81a1c1"], #18 
             ["#56b6c2", "#56b6c2"], #19 
-            ["#c678dd", "#c678dd"], #20 
+            ["#b48ead", "#b48ead"], #20 
             ["#e06c75", "#e06c75"], #21
             ["#fb9f7f", "#fb9f7f"], #22
             ["#ffd47e", "#ffd47e"]] #23
@@ -368,7 +368,7 @@ def init_widgets_list():
             **base(bg=colors[15]),
             font='UbuntuMono Nerd Font',
 
-                    fontsize = 11,
+                    fontsize = 15,
                     margin_y = 3,
                     margin_x = 2,
                     padding_y = 5,

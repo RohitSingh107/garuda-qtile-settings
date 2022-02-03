@@ -3,7 +3,7 @@
 
 pkgname=garuda-qtile-settings
 pkgdesc='Garuda Linux Qtile settings'
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/settings/$pkgname"
