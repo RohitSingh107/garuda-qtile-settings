@@ -34,7 +34,6 @@ from libqtile import layout, bar, widget, hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.command import lazy
 
-from libqtile.widget import Spacer
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -76,7 +75,7 @@ keys = [
 # SUPER + SHIFT KEYS
 
     Key([mod, "shift"], "Return", lazy.spawn('pcmanfm')),
-    Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#ff1493' -sb '#ff1493' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=15'")),
 #    Key([mod, "shift"], "d", lazy.spawn(home + '/.config/qtile/scripts/dmenu.sh')),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
@@ -270,7 +269,7 @@ for i in groups:
 
 
 def init_layout_theme():
-    return {"margin":10,
+    return {"margin":8,
             "border_width":2,
             "border_focus": "#ff00ff",
             "border_normal": "#f4c2c2"
@@ -392,13 +391,13 @@ def init_widgets_list():
                         ),
                 widget.TaskList(
                     highlight_method = 'border', # or block
-                    icon_size=17,
+                    icon_size=20,
                     max_title_width=150,
                     rounded=True,
                     padding_x=0,
                     padding_y=0,
                     margin_y=0,
-                    fontsize=14,
+                    fontsize=17,
                     border=colors[7],
                     foreground=colors[9],
                     margin=2,
@@ -419,7 +418,7 @@ def init_widgets_list():
 
                widget.CurrentLayout(
                       font = "Noto Sans Bold",
-                      fontsize = 12,
+                      fontsize = 16,
                       foreground = colors[5],
                       background = colors[3]
                         ),
@@ -427,7 +426,7 @@ def init_widgets_list():
 
                 widget.Net(
                          font="Noto Sans",
-                         fontsize=12,
+                         fontsize=16,
                         # Here enter your network name
                          interface=["wlp6s0"],
                          format = '{down} ↓↑ {up}',
@@ -440,7 +439,7 @@ def init_widgets_list():
                         font="Noto Sans",
                         #format = '{MemUsed}M/{MemTotal}M',
                         update_interval = 1,
-                        fontsize = 12,
+                        fontsize = 16,
                         foreground = colors[5],
                         background = colors[22],
                         mouse_callbacks = {'Button1': lambda : qtile.cmd_spawn(myTerm + ' -e htop')},
@@ -450,7 +449,7 @@ def init_widgets_list():
                         font="Noto Sans",
                         format = '{MemUsed: .0f}M/{MemTotal: .0f}M',
                         update_interval = 1,
-                        fontsize = 12,
+                        fontsize = 16,
                         measure_mem = 'M',
                         foreground = colors[5],
                         background = colors[16],
@@ -460,7 +459,7 @@ def init_widgets_list():
                widget.Clock(
                         foreground = colors[9],
                         background = colors[23],
-                        fontsize = 12,
+                        fontsize = 16,
                         format="%Y-%m-%d %H:%M"
                         ),
 
@@ -488,8 +487,8 @@ widgets_screen2 = init_widgets_screen2()
 
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20, opacity=0.85, background= "000000")),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=20, opacity=0.85, background= "000000"))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=25, opacity=0.85, background= "000000")),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=25, opacity=0.85, background= "000000"))]
 screens = init_screens()
 
 
