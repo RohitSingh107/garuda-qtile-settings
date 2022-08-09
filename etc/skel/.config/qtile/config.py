@@ -31,7 +31,7 @@ import socket
 import subprocess
 from typing import List  # noqa: F401
 from libqtile import layout, bar, widget, hook, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule, ScratchPad, DropDown
 from libqtile.command import lazy
 
 
@@ -301,8 +301,27 @@ layouts = [
     layout.Zoomy(**layout_theme)
 ]
 
-# COLORS FOR THE BAR
+# ScratchPads
+groups.append(
+        ScratchPad(
+            'scratchpad', [
+                DropDown('term', 'alacritty', width=0.8, height=0.7, x=0.1, y=0.1, opacity=1),
+                DropDown('fm', 'pcmanfm', width=0.4, height=0.5, x=0.3, y=0.1, opacity=0.5),
 
+                ]
+            )
+        )
+
+# Extend keys for scratchPad
+keys.extend(
+        [
+            Key(["control"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
+            # Key(["control"], "s", lazy.group['scratchpad'].dropdown_toggle('fm')),
+            ]
+        )
+
+
+# COLORS FOR THE BAR
 
 def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
