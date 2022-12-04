@@ -643,8 +643,7 @@ colors:
   # Default colors
   primary:
     background: '#282a36'
-    foreground: '#20C20E'
-    # foreground: '#f8f8f2'
+    foreground: '#f8f8f2'
 
   # Normal colors
   normal:
