@@ -327,7 +327,7 @@ def init_colors():
     return [["#2F343F", "#2F343F"], # color 0
             ["#2F343F", "#2F343F"], # color 1
             ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#ff5050", "#ff5050"], # color 3
+            ["#ff5555", "#ff5555"], # color 3
             ["#f4c2c2", "#f4c2c2"], # color 4
             ["#ffffff", "#ffffff"], # color 5
             ["#ffd47e", "#ffd47e"], # color 6
@@ -346,8 +346,8 @@ def init_colors():
             ["#56b6c2", "#56b6c2"], #19 
             ["#b48ead", "#b48ead"], #20 
             ["#e06c75", "#e06c75"], #21
-            ["#fb9f7f", "#fb9f7f"], #22
-            ["#ffd47e", "#ffd47e"]] #23
+            ["#ff79c6", "#ff79c6"], #22
+            ["#ffb86c", "#ffb86c"]] #23
 
 colors = init_colors()
 
