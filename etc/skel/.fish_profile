@@ -1,0 +1,10 @@
+set -x BROWSER 'firedragon'
+set -x TERM 'alacritty'
+set -x MAIL 'thunderbird'
+set -x QT_QPA_PLATFORMTHEME 'qt5ct'
+set -x GTK2_RC_FILES "$HOME/.gtkrc-2.0"
+set -x XDG_CURRENT_DESKTOP 'Unity'
+
+set -x ALTERNATE_EDITOR 'micro'
+set -x EDITOR 'micro'
+set -x VISUAL 'micro'

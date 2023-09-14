@@ -1,7 +1,9 @@
-from libqtile.config import Drag, Key
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule, ScratchPad, DropDown
 from libqtile.command import lazy
 
-from defaults import mod, mod1, mod2, home, myTerm, myFM, myBrowser
+import subprocess as sp
+
+from defaults import mod, mod1, mod2, home, myTerm, systemMonitor, myFM, myBrowser
 from groups import groups
 
 
@@ -43,8 +45,7 @@ keys = [
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "t", lazy.spawn('xterm')),
     Key([mod], "v", lazy.spawn('pavucontrol')),
-    Key([mod], "d", lazy.spawn(
-        "dmenu_run -i -nb '#191919' -nf '#ff1493' -sb '#ff1493' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=15'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#ff1493' -sb '#ff1493' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=15'")),
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn(myTerm)),
     Key([mod], "KP_Enter", lazy.spawn(myTerm)),
@@ -78,7 +79,7 @@ keys = [
 
     # CONTROL + SHIFT KEYS
 
-    Key([mod2, "shift"], "Escape", lazy.spawn('lxtask')),
+    Key([mod2, "shift"], "Escape", lazy.spawn(systemMonitor)),
 
 
     # SCREENSHOTS
@@ -90,8 +91,9 @@ keys = [
     # MULTIMEDIA KEYS
 
     # INCREASE/DECREASE BRIGHTNESS
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s +5%")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%- ")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn(home + '/.config/qtile/scripts/brightness.sh inc')),
+    Key([], "XF86MonBrightnessDown", lazy.spawn(home + '/.config/qtile/scripts/brightness.sh dec')),
+    # Key([], "XF86MonBrightnessDown", lazy.spawn(f"notify-send {brightnessCon(False)}")),
 
     # INCREASE/DECREASE/MUTE VOLUME
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),

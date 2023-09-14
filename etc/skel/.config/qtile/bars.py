@@ -1,7 +1,7 @@
 import os
 from libqtile import bar, widget, qtile
 
-from defaults import myTerm
+from defaults import myTerm, home
 from colorschemes import colors
 
 
@@ -66,7 +66,7 @@ def init_widgets_list():
             txt_minimized='>_ ',
             borderwidth=1,
             background=colors[12],
-            #unfocused_border = 'border'
+            # unfocused_border = 'border'
         ),
 
         widget.CurrentLayoutIcon(
@@ -89,7 +89,7 @@ def init_widgets_list():
             font="Noto Sans",
             fontsize=16,
             # Here enter your network name
-            interface=["wlp6s0"],
+            interface="wlo1",
             format='{down} ↓↑ {up}',
             foreground=colors[1],
             background=colors[11],
@@ -98,7 +98,7 @@ def init_widgets_list():
 
         widget.CPU(
             font="Noto Sans",
-            #format = '{MemUsed}M/{MemTotal}M',
+            format='{freq_current}GHz {load_percent}%',
             update_interval=1,
             fontsize=16,
             foreground=colors[1],
