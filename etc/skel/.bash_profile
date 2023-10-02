@@ -1,3 +1,8 @@
+#
+# ~/.bash_profile
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
 export BROWSER=firedragon
 export TERM=alacritty
 export MAIL=thunderbird
