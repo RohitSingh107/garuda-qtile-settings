@@ -8,6 +8,8 @@ function run {
 }
 
 
+## Export Environment Variables
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 #starting utility applications at boot time
 lxsession &
