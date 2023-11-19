@@ -1,6 +1,8 @@
 # Garuda Linux Qtile settings
 
+[![pipeline status](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-qtile-settings/badges/master/pipeline.svg)](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-qtile-settings/-/commits/master)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Latest Release](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-qtile-settings/-/badges/release.svg)](https://gitlab.com/garuda-linux/themes-and-settings/settings/garuda-qtile-settings/-/releases)
 
 ## Found any issue?
 
