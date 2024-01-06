@@ -29,6 +29,9 @@ yellow = "#f1fa8c"
 background = "#282a36"
 foreground = "#f8f8f2"
 
+[selection]
+save_to_clipboard = true
+
 [cursor]
 style = "Underline"
 
@@ -97,6 +100,7 @@ decorations = "full"
 dynamic_padding = true
 opacity = 0.6
 title = "Alacritty@Garuda"
+dynamic_title = true
 decorations_theme_variant = "Dark"
 
 [window.class]
