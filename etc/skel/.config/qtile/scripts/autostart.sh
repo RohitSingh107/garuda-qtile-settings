@@ -19,7 +19,7 @@ numlockx on &
 blueman-applet &
 #flameshot &
 #picom --config $HOME/.config/picom/picom.conf &
-picom --config .config/picom/picom-blur.conf --experimental-backends &
+picom --config .config/picom/picom-blur.conf &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
 # feh --randomize --bg-fill /usr/share/wallpapers/garuda-wallpapers/*
