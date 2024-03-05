@@ -1,0 +1,108 @@
+# Import your own theme:
+# import = ["/home/user/.config/alacritty/themes/theme.toml"]
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#575b70"
+blue = "#caa9fa"
+cyan = "#9aedfe"
+green = "#5af78e"
+magenta = "#ff92d0"
+red = "#ff6e67"
+white = "#e6e6e6"
+yellow = "#f4f99d"
+
+[colors.normal]
+black = "#000000"
+blue = "#caa9fa"
+cyan = "#8be9fd"
+green = "#50fa7b"
+magenta = "#ff79c6"
+red = "#ff5555"
+white = "#bfbfbf"
+yellow = "#f1fa8c"
+
+[colors.primary]
+background = "#282a36"
+foreground = "#f8f8f2"
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = "Underline"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "FantasqueSansMono", style = "Regular" }
+bold = { family = "FantasqueSansMono", style = "Bold" }
+italic = { family = "FantasqueSansMono", style = "Italic" }
+bold_italic = { family = "FantasqueSansMono", style = "Bold Italic" }
+size = 10
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "PasteSelection"
+key = "Insert"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[shell]
+program = "/usr/bin/fish"
+
+[window]
+decorations = "full"
+dynamic_padding = true
+opacity = 0.6
+title = "Alacritty@Garuda"
+dynamic_title = true
+decorations_theme_variant = "Dark"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
